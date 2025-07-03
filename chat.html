@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat - SayaliBot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>SayaliBot</header>
+  <div class="container">
+    <h2>SayaliBot Chat</h2>
+    <p>Talk to your AI bot below!</p>
+  </div>
+
+  <!-- Chatbase embed -->
+  <script>
+    (function(){
+      if(!window.chatbase || window.chatbase("getState")!=="initialized"){
+        window.chatbase = (...arguments)=>{
+          if(!window.chatbase.q){window.chatbase.q=[]}
+          window.chatbase.q.push(arguments)
+        };
+        window.chatbase = new Proxy(window.chatbase,{
+          get(target, prop){
+            if(prop==="q"){return target.q}
+            return (...args)=>target(prop,...args)
+          }
+        })
+      }
+      const onLoad = function(){
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "OszBeGvEzLAywt5otOYhz";
+        script.domain = "www.chatbase.co";
+        document.body.appendChild(script)
+      };
+      if(document.readyState==="complete"){
+        onLoad()
+      }else{
+        window.addEventListener("load", onLoad)
+      }
+    })();
+  </script>
+
+  <div class="container">
+    <p><a href="history.html">View Chat History</a> | <a href="profile.html">Profile</a></p>
+  </div>
+</body>
+</html>

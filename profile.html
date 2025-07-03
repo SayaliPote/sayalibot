@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profile - SayaliBot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>SayaliBot</header>
+  <div class="container">
+    <h2>My Profile</h2>
+
+    <form id="profileForm">
+      <label>Email:</label>
+      <input type="email" id="profileEmail" required />
+
+      <label>Password:</label>
+      <input type="password" id="profilePassword" required />
+
+      <button type="submit">Save Changes</button>
+    </form>
+
+    <br />
+    <button onclick="deleteAccount()" style="background-color:#d32f2f">Delete Account</button>
+    <br /><br />
+    <a href="chat.html">⬅ Back to Chat</a>
+  </div>
+
+  <script>
+    // Load current values
+    const emailField = document.getElementById("profileEmail");
+    const passwordField = document.getElementById("profilePassword");
+    emailField.value = localStorage.getItem("userEmail") || "";
+    passwordField.value = localStorage.getItem("userPassword") || "";
+
+    // Save edited values
+    document.getElementById("profileForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      localStorage.setItem("userEmail", emailField.value);
+      localStorage.setItem("userPassword", passwordField.value);
+      alert("Profile updated successfully!");
+    });
+
+    // Delete account
+    function deleteAccount() {
+      if (confirm("Are you sure you want to delete your account?")) {
+        localStorage.removeItem("userEmail");
+        localStorage.removeItem("userPassword");
+        alert("Account deleted.");
+        window.location.href = "index.html";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SayaliBot - AI Chatbot</title>
+</head>
+<body>
+  <h2 style="text-align:center; font-family:sans-serif; margin-top:30px;">
+    👋 Welcome to SayaliBot!
+  </h2>
+  <p style="text-align:center;">This is your personal AI chatbot created using Chatbase.</p>
+
+  <!-- Chatbase Chatbot Embed Code -->
+  <script>
+  (function(){
+    if(!window.chatbase || window.chatbase("getState")!=="initialized"){
+      window.chatbase = (...arguments)=>{
+        if(!window.chatbase.q){window.chatbase.q=[]}
+        window.chatbase.q.push(arguments)
+      };
+      window.chatbase = new Proxy(window.chatbase,{
+        get(target, prop){
+          if(prop==="q"){return target.q}
+          return (...args)=>target(prop,...args)
+        }
+      })
+    }
+    const onLoad = function(){
+      const script = document.createElement("script");
+      script.src = "https://www.chatbase.co/embed.min.js";
+      script.id = "OszBeGvEzLAywt5otOYhz";  <!-- Make sure this ID is your bot ID -->
+      script.domain = "www.chatbase.co";
+      document.body.appendChild(script)
+    };
+    if(document.readyState==="complete"){
+      onLoad()
+    }else{
+      window.addEventListener("load", onLoad)
+    }
+  })();
+  </script>
+
+  <!-- Custom footer -->
+  <div style="text-align:center; font-size:13px; color:#444; margin-top:60px; font-family:sans-serif;">
+    🌟 Created by <strong>Sayali Pote</strong>
+  </div>
+</body>
+</html>
