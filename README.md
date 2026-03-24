@@ -54,4 +54,4 @@ Backend will run on:
 
 ## Author
 
-👩‍💻 Created by Sayali Pote
+👩‍💻 Created by Sayali Pote.
